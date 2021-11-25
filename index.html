@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div>
+            <div class="foods">Best foods</div>
+            <ul id="list"></ul>
+        </div>
+    </body>
+    <script>
+      const rootElement = document.querySelector(".foods");
+        const foodData = [
+            {
+                id: 1,
+                image: "🌮",
+                name: "taco",
+            },
+            {
+                id: 2,
+                image: "🍔",
+                name: "burger",
+            },
+            {
+                id: 3,
+                image: "🍎",
+                name: "apple",
+            },
+            {
+                id: 4,
+                image: "🥞",
+                name: "pancakes",
+            },
+        ];
+
+        /** Write code below**/
+        class Foods {
+            constructor(foods) {
+                this.foods = foods;
+            }
+            get getFoods() {
+
+                return this.foods;
+            }
+      
+        }
+        const classFood = new Foods(foodData);
+        let listFood = classFood.getFoods;
+
+        function removeFood(id) {
+            let data = listFood.filter((food) => food.id !== id);
+            listFood = data;
+          readData()
+            return listFood;
+        }
+function readData(){
+     var ul = document.getElementById("list");
+     ul.querySelectorAll('*').forEach(n => n.remove());
+        listFood.forEach((el) => {
+            var li = document.createElement("li");
+            var div = document.createElement("div");
+            div.innerHTML = `${el.id} - ${el.name}`;
+            div.addEventListener("click", function (e) {
+                removeFood(el.id);
+            });
+            li.append(div);
+            ul.appendChild(li);
+        });
+}
+readData()
+    </script>
+</html>
